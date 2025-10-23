@@ -54,7 +54,7 @@ A modern, professional 3D website for your IPTV business with TV show-like openi
 ## 📞 Contact Integration:
 - **Telegram Account**: @MGTrustnetSolution
 - **Telegram Channel**: @MGTrustnetChannel
-- **Email**: info@mgtrustnet.com
+- **Email**: mmlgrasp@gmail.com
 
 ## 🎨 Customization:
 - **Company Name**: Change "M G Trustnet Solution" throughout the files
