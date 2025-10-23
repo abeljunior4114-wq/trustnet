@@ -1,15 +1,53 @@
 // DOM Content Loaded
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize all functionality
+    initTrustAnimation();
     initNavigation();
     initPricingToggle();
     initAppFilter();
     initContactForm();
     initScrollAnimations();
-    initTVIntro();
     initLogo();
     init3DEffects();
 });
+
+// Trust Animation functionality
+function initTrustAnimation() {
+    const trustAnimation = document.getElementById('trust-animation');
+    
+    if (trustAnimation) {
+        // Hide trust animation after 1.5 seconds
+        setTimeout(() => {
+            trustAnimation.style.opacity = '0';
+            setTimeout(() => {
+                trustAnimation.style.display = 'none';
+            }, 500); // Wait for fade out animation to complete
+        }, 1500);
+        
+        // Add some interactive effects
+        const shield = document.querySelector('.shield-3d');
+        if (shield) {
+            shield.addEventListener('mouseenter', function() {
+                this.style.transform = 'translate(-50%, -50%) translateZ(50px) translateY(-5px) scale(1.05)';
+            });
+            
+            shield.addEventListener('mouseleave', function() {
+                this.style.transform = 'translate(-50%, -50%) translateZ(50px) translateY(0px) scale(1)';
+            });
+        }
+        
+        // Add click effect to badges
+        const badges = document.querySelectorAll('.badge');
+        badges.forEach(badge => {
+            badge.addEventListener('click', function() {
+                this.style.transform = 'scale(1.2)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 200);
+            });
+        });
+    }
+}
 
 // Navigation functionality
 function initNavigation() {
