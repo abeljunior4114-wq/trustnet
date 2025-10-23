@@ -42,172 +42,6 @@ body {
     padding: 0 20px;
 }
 
-/* TV Show Intro Animation */
-.tv-intro {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
-    z-index: 10000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    animation: fadeOut 3s ease-in-out 2s forwards;
-    flex-direction: column;
-}
-
-.tv-screen {
-    width: 80%;
-    max-width: 600px;
-    aspect-ratio: 16/9;
-    background: #000;
-    border-radius: 20px;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 0 50px rgba(99, 102, 241, 0.5);
-}
-
-.tv-static {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: 
-        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.1) 1px, transparent 1px),
-        radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1) 1px, transparent 1px);
-    animation: static 0.1s infinite;
-}
-
-.tv-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    color: white;
-    z-index: 2;
-}
-
-.logo-animation h1 {
-    font-size: 3rem;
-    font-weight: 800;
-    margin-bottom: 1rem;
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: slideInUp 1s ease-out;
-}
-
-.logo-animation p {
-    font-size: 1.2rem;
-    color: #9ca3af;
-    animation: slideInUp 1s ease-out 0.5s both;
-}
-
-.tv-logo {
-    text-align: center;
-    animation: slideInUp 1s ease-out 1s both;
-}
-
-.tv-icon {
-    font-size: 4rem;
-    margin-bottom: 1rem;
-    animation: bounce 2s infinite;
-}
-
-.tv-logo h1 {
-    font-size: 3rem;
-    font-weight: 700;
-    color: white;
-    margin-bottom: 1rem;
-    background: linear-gradient(135deg, #6366f1, #8b5cf6);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.tv-logo p {
-    font-size: 1.2rem;
-    color: rgba(255, 255, 255, 0.8);
-    margin-bottom: 2rem;
-}
-
-.loading-dots {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-}
-
-.loading-dots span {
-    width: 8px;
-    height: 8px;
-    background: #6366f1;
-    border-radius: 50%;
-    animation: loadingPulse 1.5s infinite;
-}
-
-.loading-dots span:nth-child(2) {
-    animation-delay: 0.3s;
-}
-
-.loading-dots span:nth-child(3) {
-    animation-delay: 0.6s;
-}
-
-@keyframes loadingPulse {
-    0%, 100% { opacity: 0.3; transform: scale(0.8); }
-    50% { opacity: 1; transform: scale(1.2); }
-}
-
-@keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
-
-.tv-channel-info {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    color: white;
-    font-size: 0.9rem;
-    opacity: 0.8;
-}
-
-.channel-number {
-    font-weight: 700;
-    font-size: 1.1rem;
-    color: #6366f1;
-}
-
-.channel-name {
-    font-size: 0.8rem;
-    margin-top: 2px;
-}
-
-@keyframes static {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.8; }
-}
-
-@keyframes slideInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeOut {
-    0% { opacity: 1; }
-    100% { opacity: 0; visibility: hidden; }
-}
 
 /* Navigation */
 .navbar {
@@ -2009,6 +1843,7 @@ input:checked + .slider:before {
         transition: 0.3s;
         box-shadow: var(--shadow-md);
         padding: 2rem 0;
+        z-index: 1000;
     }
     
     .nav-menu.active {
@@ -2019,20 +1854,41 @@ input:checked + .slider:before {
         grid-template-columns: 1fr;
         text-align: center;
         gap: 2rem;
+        padding: 2rem 1rem;
     }
     
     .hero-title {
         font-size: 2.5rem;
+        line-height: 1.2;
+    }
+    
+    .hero-description {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
     }
     
     .about-content {
         grid-template-columns: 1fr;
         gap: 2rem;
+        padding: 0 1rem;
     }
     
     .contact-content {
         grid-template-columns: 1fr;
         gap: 2rem;
+        padding: 0 1rem;
     }
     
     .stats-grid {
@@ -2042,6 +1898,7 @@ input:checked + .slider:before {
     
     .pricing-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
     
     .pricing-card.featured {
@@ -2050,43 +1907,124 @@ input:checked + .slider:before {
     
     .apps-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
     
     .services-grid {
         grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero-title {
-        font-size: 2rem;
+        gap: 1.5rem;
     }
     
     .section-title {
         font-size: 2rem;
     }
     
-    .hero-buttons {
+    .section-description {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+    
+    .welcome-content {
         flex-direction: column;
-        align-items: center;
+        text-align: center;
+        gap: 2rem;
+        padding: 0 1rem;
     }
     
-    .btn {
-        width: 100%;
-        justify-content: center;
-    }
-    
-    .stats-grid {
+    .welcome-features {
         grid-template-columns: 1fr;
+        gap: 1rem;
     }
     
     .apps-filter {
         flex-direction: column;
         align-items: center;
+        gap: 0.5rem;
     }
     
     .filter-btn {
-        width: 200px;
+        width: 100%;
+        max-width: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2rem;
+        line-height: 1.1;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+        padding: 12px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .apps-filter {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .filter-btn {
+        width: 100%;
+        max-width: 180px;
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+    
+    .nav-container {
+        padding: 0 15px;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+    
+    .hero-content {
+        padding: 1.5rem 0.5rem;
+    }
+    
+    .section-header {
+        margin-bottom: 2rem;
+    }
+    
+    .pricing-toggle {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .apk-packages {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .contact-form {
+        padding: 1.5rem;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 10px 12px;
+        font-size: 0.9rem;
     }
 }
 
@@ -2095,8 +2033,8 @@ html {
     scroll-behavior: smooth;
 }
 
-/* Loading Animation */
-.loading {
+/* Loading Animation - DISABLED to keep content visible */
+/* .loading {
     opacity: 0;
     animation: fadeIn 0.5s ease-in-out forwards;
 }
@@ -2104,7 +2042,7 @@ html {
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
-}
+} */
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {

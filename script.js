@@ -171,26 +171,10 @@ function initContactForm() {
     }
 }
 
-// Scroll animations
+// Scroll animations - DISABLED to prevent content disappearing
 function initScrollAnimations() {
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('loading');
-            }
-        });
-    }, observerOptions);
-
-    // Observe elements for animation
-    const animatedElements = document.querySelectorAll('.service-card, .pricing-card, .app-card, .stat-item, .contact-item');
-    animatedElements.forEach(el => {
-        observer.observe(el);
-    });
+    // Animation disabled - content stays visible
+    return;
 }
 
 // TV Intro functionality
@@ -513,26 +497,20 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// Add loading class to elements for animation
+// Elements stay visible - no initial hiding
 document.addEventListener('DOMContentLoaded', function() {
     const elements = document.querySelectorAll('.service-card, .pricing-card, .app-card, .stat-item, .contact-item');
     elements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        el.style.opacity = '1'; // Keep elements visible
+        el.style.transform = 'translateY(0)'; // No initial transform
+        el.style.transition = 'opacity 0.3s ease, transform 0.3s ease'; // Smooth transitions
     });
 });
 
-// Parallax effect for hero section
-window.addEventListener('scroll', function() {
-    const scrolled = window.pageYOffset;
-    const parallaxElements = document.querySelectorAll('.floating-elements .element');
-    
-    parallaxElements.forEach((element, index) => {
-        const speed = 0.5 + (index * 0.1);
-        element.style.transform = `translateY(${scrolled * speed}px)`;
-    });
-});
+// Parallax effect DISABLED - elements stay stable
+// window.addEventListener('scroll', function() {
+//     // Parallax disabled to keep content stable
+// });
 
 // Add hover effects for interactive elements
 document.addEventListener('DOMContentLoaded', function() {
@@ -635,81 +613,8 @@ function initLogo() {
     }
 }
 
-// 3D Effects functionality
+// 3D Effects functionality - DISABLED for stability
 function init3DEffects() {
-    // Mouse tracking for 3D effects
-    document.addEventListener('mousemove', function(e) {
-        const mouseX = e.clientX / window.innerWidth;
-        const mouseY = e.clientY / window.innerHeight;
-        
-        // Apply 3D rotation to floating elements
-        const elements = document.querySelectorAll('.element');
-        elements.forEach((element, index) => {
-            const speed = 0.5 + (index * 0.1);
-            const rotateX = (mouseY - 0.5) * 15 * speed;
-            const rotateY = (mouseX - 0.5) * 15 * speed;
-            
-            element.style.transform = `translateZ(${index * 10}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-        });
-        
-        // Apply 3D rotation to hero content
-        const heroText = document.querySelector('.hero-text');
-        const heroVisual = document.querySelector('.hero-visual');
-        
-        if (heroText) {
-            const rotateX = (mouseY - 0.5) * 3;
-            const rotateY = (mouseX - 0.5) * 3;
-            heroText.style.transform = `translateZ(30px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-        }
-        
-        if (heroVisual) {
-            const rotateX = (mouseY - 0.5) * -3;
-            const rotateY = (mouseX - 0.5) * -3;
-            heroVisual.style.transform = `translateZ(20px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-        }
-        
-        // Apply 3D rotation to TV frame
-        const tvFrame = document.querySelector('.tv-frame');
-        if (tvFrame) {
-            const rotateX = (mouseY - 0.5) * 8;
-            const rotateY = (mouseX - 0.5) * 8;
-            tvFrame.style.transform = `rotateY(${-15 + rotateY}deg) rotateX(${10 + rotateX}deg) translateZ(20px)`;
-        }
-    });
-    
-    // Enhanced card hover effects
-    const cards = document.querySelectorAll('.service-card, .pricing-card, .app-card');
-    cards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-8px) translateZ(15px) rotateX(3deg)';
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateZ(0)';
-        });
-        
-        card.addEventListener('mousemove', function(e) {
-            const rect = this.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            const rotateX = (y - centerY) / 15;
-            const rotateY = (centerX - x) / 15;
-            
-            this.style.transform = `translateY(-8px) translateZ(15px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-        });
-    });
-    
-    // Parallax scrolling effect
-    window.addEventListener('scroll', function() {
-        const scrolled = window.pageYOffset;
-        const parallaxElements = document.querySelectorAll('.element, .hero-text, .hero-visual');
-        
-        parallaxElements.forEach((element, index) => {
-            const speed = 0.3 + (index * 0.05);
-            const yPos = -(scrolled * speed);
-            element.style.transform += ` translateY(${yPos}px)`;
-        });
-    });
+    // 3D effects disabled to keep content stable
+    return;
 }

@@ -50,3 +50,4 @@ Write-Host "You will be prompted to login to GitHub..." -ForegroundColor Yellow
 git push -u origin main
 
 Write-Host "🎉 SUCCESS! Your code has been pushed to GitHub!" -ForegroundColor Green
+
